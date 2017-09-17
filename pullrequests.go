@@ -38,6 +38,11 @@ func (p *PullRequests) Activities(po *PullRequestsOptions) (interface{}, error) 
 	return p.c.execute("GET", urlStr, "")
 }
 
+func (p *PullRequests) Statuses(po *PullRequestsOptions) (interface{}, error) {
+	urlStr := GetApiBaseURL() + "/repositories/" + po.Owner + "/" + po.Repo_slug + "/pullrequests/statuses"
+	return p.c.execute("GET", urlStr, "")
+}
+
 func (p *PullRequests) Activity(po *PullRequestsOptions) (interface{}, error) {
 	urlStr := GetApiBaseURL() + "/repositories/" + po.Owner + "/" + po.Repo_slug + "/pullrequests/" + po.Id + "/activity"
 	return p.c.execute("GET", urlStr, "")
